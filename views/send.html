@@ -1,0 +1,84 @@
+<h1>Contact</h1>
+<br />
+
+<div id="ContactMessageSentAlert" class="alert alert-success">
+	You're message has been sent.  
+</div>
+
+<form role="form" id="ContactMessageForm">
+	<div class="form-group">
+	  <div class="well">
+	    Would you like your recipient to be able to respond to your email?   If so, we will need to know your email to send you a notification.
+	    <label for="FromEmailAddress" class="sr-only legacy-label">Your Email Address</label>
+      	<input type="email" id="FromEmailAddress" name="FromEmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
+      </div>
+	</div>
+	<div class="form-group">
+    	<label for="ToEmailAddress" class="sr-only legacy-label">Recipient's Email Address</label>
+		<input type="email" id="ToEmailAddress" name="ToEmailAddress" maxlength="255" class="form-control" placeholder="Recipient's Email Address" />
+	</div>
+	<div class="form-group">
+		<label for="Subject" class="sr-only legacy-label">Subject</label>
+		<input type="text" id="Subject" name="Subject" maxlength="255" class="form-control" placeholder="Subject" />
+	</div>
+	<div class="form-group">
+		<label for="Message" class="sr-only legacy-label">Message</label>
+		<textarea id="Message" name="Message" rows="5" class="form-control" placeholder="Message"></textarea>
+	</div>
+	<div class="form-group">
+		<canvas id="CaptchaCanvas" class="captcha-canvas" />
+		<input type="text" id="Captcha" name="Captcha" maxlength="10" class="form-control form-control-narrow" placeholder="Type the code displayed in the image above." />
+	</div>
+	<button type="button" class="btn btn-default" id="ContactMessageSendButton">Send</button>
+</form>
+
+<script type="text/javascript" src="/scripts/mail.min.js" defer="defer"></script>
+<script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
+<script type="text/javascript">
+	$(document).ready(function () { 
+		$('#ContactMessageSentAlert').hide();
+		$('#ContactMessageForm').show();
+		
+		var securityCode = GenerateCaptcha('CaptchaCanvas');
+		
+		$.validator.addMethod('twitterUsername', function(value, element) {
+			return this.optional(element) || /^(@?[a-zA-Z0-9\_]{1,15})$/.test(value);
+		}, 'Invalid');
+
+		var validator = $('#ContactMessageForm').validate({
+			errorElement: 'div',
+			rules: {
+				FromEmailAddress: {email: true},
+				ToEmailAddress: {required: true, email: true},
+				Subject: {required: true},
+				Message: {required: true},
+				Captcha: {required: true, captcha: securityCode}
+			},
+			messages: {
+				FromEmailAddress: {email: 'Please enter a valid email address.'},
+				ToEmailAddress: {required: 'Please enter the recipient's email address.', email: 'Please enter a valid email address.'},
+				Subject: {required: 'Please enter a subject.'},
+				Message: {required: 'Please enter a message.'},
+				Captcha: {required: 'Please type the code displayed in the image above.', captcha: 'The code you typed did not match the image displayed.'}
+			},
+			errorPlacement: function (error, element) {
+				$(error).insertBefore($(element));
+			},
+			highlight: function(element, errorClass) {				
+				$(element).parent('div').addClass('has-error');
+			},			
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).parent('div').removeClass('has-error');
+			},
+			onfocusout: false,
+			invalidHandler: function(event, validator){
+				setTimeout(function(){
+					$('input:text').blur();
+					$('textarea').blur();
+					// Pseudo of input:email is not recognized by jQuery yet, so have to target the email fields individually.
+					$('#EmailAddress').blur();
+				}, 10);
+			}
+		});		
+	});
+</script>
