@@ -1,2 +1,2 @@
-email.github.io
+emailapp.github.io
 ===============
