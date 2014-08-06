@@ -63,19 +63,6 @@ label.legacy-label
 }
 
 
-/* Logo */
-.logo-bracket
-{
-	color: rgba(120, 120, 120, 1.0);
-	font-weight: normal;
-}
-
-.logo-tag
-{
-	color: rgba(53, 126, 189, 1.0);
-	font-weight: lighter;
-}
-
 
 /* Page Contents */
 .page-content
@@ -128,6 +115,18 @@ label.legacy-label
 .no-padding
 {
 	padding: 0px !important;
+}
+
+
+/* Form */
+.form-control-narrow
+{
+	width: 60%;
+}
+
+.form-control-floated-left
+{
+	float: left;
 }
 
 
