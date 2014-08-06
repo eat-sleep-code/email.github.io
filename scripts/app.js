@@ -26,29 +26,8 @@ app.controller('DefaultController', function($scope) {});
 
 app.controller('PostController', function($scope, $routeParams, $http) {
 	$scope.post = $routeParams.postID;
-	$http({method: 'GET', url: '//eat-sleep-code.com/data/blog.xml'}).
-		success(function(data, status) {
-			var x2js = new X2JS();
-			var jsonObject = x2js.xml_str2json(data);
-			$scope.data = jsonObject;
-			$scope.status = status;
-			
-			/* Paging */
-			$scope.currentPage = 0;
-    			$scope.pageSize = 10;
-    			/* console.log('DATA: ' + JSON.stringify(jsonObject));
-			console.log('STATUS: ' + status); */
-			$scope.numberOfItems = jsonObject.blog.article.length;    
-			$scope.numberOfPages = Math.ceil($scope.numberOfItems/$scope.pageSize); 
-			/* console.log('DATA - Number Of Items :' + $scope.numberOfItems);
-			console.log('DATA - Number Of Pages :' + $scope.numberOfPages); */
-			
-		}).
-		error(function(data, status) {
-			$scope.data = data || "Request failed";
-			$scope.status = status;
-			console.log('STATUS: ' + status);
-		});
+	$scope.data = "";
+	$scope.status = "";
 });
 
 
