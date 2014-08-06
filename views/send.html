@@ -68,6 +68,12 @@
 			}
 		});
 		
+		// Toggle visibility of "CAPTCHA" row...
+		if ($.cookie('ClearedCaptcha') !== undefined)
+		{
+			$('#CaptchaRow').hide();	
+		}
+		
 		var securityCode = GenerateCaptcha('CaptchaCanvas');
 		var validator = $('#ContactMessageForm').validate({
 			errorElement: 'div',
