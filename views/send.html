@@ -60,14 +60,14 @@
 				Subject: {required: true},
 				Message: {required: true},
 				Captcha: {required: true, captcha: securityCode},
-				FromEmailAddress: {email: true}
+				FromEmailAddress: {required: true, email: true}
 			},
 			messages: {
 				ToEmailAddress: {required: 'Please enter the recipient\'s email address.', email: 'Please enter a valid email address.'},
 				Subject: {required: 'Please enter a subject.'},
 				Message: {required: 'Please enter a message.'},
-				Captcha: {required: 'Please type the code displayed in the image above.', captcha: 'The code you typed did not match the image displayed.'},
-				FromEmailAddress: {email: 'Please enter a valid email address.'}
+				Captcha: {required: 'Please type the code displayed in the image at the left.', captcha: 'The code you typed did not match the image displayed.'},
+				FromEmailAddress: {required: 'You have indicated that you would like to receive an email notification if the recipient responds to your message.   You must provide your email address to enable this feature.', email: 'Please enter a valid email address.'}
 			},
 			errorPlacement: function (error, element) {
 				$(error).insertBefore($(element));
