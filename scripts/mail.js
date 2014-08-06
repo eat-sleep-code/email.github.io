@@ -32,9 +32,9 @@ $('#ContactMessageSendButton').click(function(e) {
     				
 				/* Send mail only if there is a message (basically prevent empty submissions if validation goes haywire)... */
 				if ($.trim($('#Message').val()).length >= 1) {
-					var sender = $.trim($('#EmailAddress').val());
-					var senderName = $.trim($('#FirstName').val()) + ' ' + $.trim($('#LastName').val());
-					var recipient = 'info@eat-sleep-code.com';
+					var sender = 'info@eat-sleep-code.com';
+					var senderName = '';
+					var recipient = $.trim($('#ToEmailAddress').val());
 					var subject = $.trim($('#Subject').val());
 					var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />' + $.trim($('#TwitterUsername').val());
 					message += '<hr />' + response.ip + '<br />' + response.city + ', ' + response.region + ' ' + response.postal + ', ' + response.country;
