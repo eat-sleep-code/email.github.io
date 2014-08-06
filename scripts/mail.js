@@ -8,7 +8,6 @@ function sendMail(sender, senderName, recipient, subject, message) {
 			'message': {
 				'from_email': 'info@eat-sleep-code.com',
 				'from_name': senderName,
-				//"headers": {"Reply-To": sender},
 				'to': [{'email': recipient, 'type': 'to'}],
 				'autotext': 'true',
 				'subject': subject,
@@ -38,7 +37,7 @@ $('#ContactMessageSendButton').click(function(e) {
 					var subject = $.trim($('#Subject').val());
 					var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />');
 					var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="http://emailapp.eat-sleep-code.com/reply/'+postID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
-					var messageFooter = 'If you would like to block all emailapp.eat-sleep-code.com users from sending you a message, <a href="http://emailapp.eat-sleep-code.com/block/'+postID+'" target="_blank" title="Click here to block users from sending you a message.">click here</a>.'
+					var messageFooter = 'If you would like to block all emailapp.eat-sleep-code.com users from sending you a message, <a href="http://emailapp.eat-sleep-code.com/block/'+postID+'" target="_blank" title="Click here to block users from sending you a message.">click here</a>.';
 				
 					//message += '<hr />' + response.ip + '<br />' + response.city + ', ' + response.region + ' ' + response.postal + ', ' + response.country;
 					sendMail(sender, senderName, recipient, subject, messageHeader + '<hr />' + message + '<hr />' + messageFooter);
