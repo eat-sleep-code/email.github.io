@@ -52,6 +52,16 @@ body
 	font-family: 'oxygenregular', 'Helvetica';
 }
 
+label 
+{
+	font-weight: normal;	
+}
+
+label.legacy-label
+{
+	display: none !important;
+}
+
 
 /* Logo */
 .logo-bracket
@@ -192,6 +202,8 @@ body
 	border-right-width: 10px;
 	border-top-color: rgba(169, 68, 66, 1.0);
 }
+
+
 
 
 
