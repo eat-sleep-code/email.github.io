@@ -44,6 +44,7 @@ $('#ContactMessageSendButton').click(function(e) {
 					
 					$('#ContactMessageSentAlert').show();
 					$('#ContactMessageForm').hide();
+					$.cookie('ClearedCaptcha', 'true', { expires: 7, path: '/' });
 				}	
 			//}, "jsonp");
 			$(window).scrollTop(0);
