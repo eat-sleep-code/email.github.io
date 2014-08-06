@@ -3,6 +3,9 @@
 
 <div id="ContactMessageSentAlert" class="alert alert-success">
 	Your message has been sent.  
+	To view responses to this message you will need the following code:
+	<div id="PostID"></div>
+	
 </div>
 
 <form role="form" id="ContactMessageForm">
@@ -35,6 +38,7 @@
 		</div>
 	</div>
 	<div class="form-group row">
+		<input type="hidden" id="PostIDHidden" />
 		<button type="button" class="btn btn-default" id="ContactMessageSendButton">Send</button>
 	</div>
 </form>
@@ -42,11 +46,27 @@
 <script type="text/javascript" src="/scripts/mail.js" defer="defer"></script>
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
 <script type="text/javascript">
+	function generateUUID(){
+		var d = new Date().getTime();
+		var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			var r = (d + Math.random()*16)%16 | 0;
+			d = Math.floor(d/16);
+			return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+		});
+		return uuid;
+	};
+	gener
+
 	$(document).ready(function () { 
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
 		$('#ContactMessageForm').show();
 		$('#FromEmailAddressRow').hide();
+		
+		// Create this post's GUID...
+		var uuid = generateUUID();
+		$('#PostIDHidden').val(uuid);
+		$('#PostID').html(uuid);
 		
 		// Toggle visibility of "From" email address row...
 		$('#ReceiveEmailNotification').click(function(){
