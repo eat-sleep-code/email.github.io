@@ -3,15 +3,16 @@
 	<head>
 		<title data-ng-bind="pageTitle">&lt;eat-sleep-code /&gt;</title>
 		<meta charset="utf-8" />
-		<meta id="MetaKeywords" name="Keywords" content="" />
-		<meta id="MetaDescription" name="Description" content="" />
+		<meta id="MetaKeywords" name="Keywords" content="Eat, Sleep, Code, eat-sleep-code" />
+		<meta id="MetaDescription" name="Description" content="The &lt;eat-sleep-code /&gt; website includes code samples and projects written in ASP.NET, C#, MVC, CSS3, JavaScript, etc." />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0" />
 		<base href="/">
 		<link rel="stylesheet" href="/style/jquery-ui.min.css" />
-		<link rel="stylesheet" href="/style/bootstrap.css" />
-		<link rel="stylesheet" href="/style/bootstrap-theme.css" />
+		<link rel="stylesheet" href="/style/bootstrap.min.css" />
+		<link rel="stylesheet" href="/style/bootstrap-theme.min.css" />
 		<link rel="stylesheet" href="/style/en-us.css" />
+		<link rel="stylesheet" href="/style/prettify.min.css" />
 		<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	</head>
 	<body>
@@ -25,7 +26,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/"></a>
+						<a class="navbar-brand" href="/"><span class="logo-bracket">&lt;</span><span class="logo-tag">eat-sleep-code </span><span class="logo-bracket">/&gt;</span></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<nav>
@@ -34,7 +35,66 @@
 									<a href="/">Home</a>
 								</li>
 								<li>
-									<a href="#!/stream">Stream</a>
+									<a class="dropdown-toggle" data-toggle="dropdown">CSS3 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#!/css/origami">Origami Element</a></li>
+										<li><a href="#!/css/rotated-ellipse">Rotated Ellipse</a></li>
+									</ul>
+								</li>
+								<li>	
+									<a class="dropdown-toggle" data-toggle="dropdown">JavaScript <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="dropdown-header">CSS Manipulation</li>
+										<li><a href="#!/javascript/jquery-stylesheet-insertion">Stylesheet Insertion</a></li>
+										<li class="divider"></li>		
+										<li class="dropdown-header">Data Management</li>
+										<li><a href="#!/javascript/storage">HTML5 Web Storage</a></li>
+										<li class="divider"></li>		
+										<li class="dropdown-header">Forms</li>
+										<li><a href="#!/javascript/jquery-validate-custom">Custom Validation Methods</a></li>
+										<li><a href="#!/javascript/dropdown-with-other-field">Dropdown List With "Other" Field</a></li>
+										<li><a href="#!/javascript/jquery-maskedinput-placeholder">Masked Input / Placeholder Integration</a></li>
+									</ul>
+								</li>
+								<li>	
+									<a class="dropdown-toggle" data-toggle="dropdown">.Net <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="dropdown-header">C#</li>
+										<li><a href="#!/net/c/common-classes">Common Classes</a></li>
+										<li><a href="#!/net/c/embed-external-content">Embed External Content</a></li>
+										<li><a href="#!/net/c/mvc4-cache-manifest">MVC4 Cache Manifest</a></li>
+										<li class="divider"></li>		
+										<li class="dropdown-header">VB.NET</li>
+										<li><a href="#!/net/vb/common-classes">Common Classes</a></li>
+										<li class="divider"></li>
+										<li class="dropdown-header">DotNetNuke</li>
+										<li><a href="#!/dotnetnuke/battleship">Battleship Module</a></li>
+										<li><a href="#!/dotnetnuke/dictionary">Dictionary Module</a></li>
+										<li><a href="#!/dotnetnuke/feedback">Feedback Module</a></li>
+										<li><a href="#!/dotnetnuke/google-sitemaps">Google Sitemaps Module</a></li>
+										<li><a href="#!/dotnetnuke/meetup">Meetup Module</a></li>
+										<li><a href="#!/dotnetnuke/module-info">Module Info Library</a></li>
+										<li><a href="#!/dotnetnuke/redirector">Redirector Module</a></li>
+										<li><a href="#!/dotnetnuke/share-on-facebook">Share On Facebook Module</a></li>
+										<li><a href="#!/dotnetnuke/site-map">Site Map Module</a></li>
+								</ul>
+								</li>
+								<li>
+									<a class="dropdown-toggle" data-toggle="dropdown">PowerShell <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#!/powershell/iis-setup">IIS Setup</a></li>
+										<li><a href="#!/powershell/unblock-files">Unblock Files</a></li>
+									</ul>
+								</li>
+								<li>
+									<a class="dropdown-toggle" data-toggle="dropdown">Utilities <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#!/utilities/excel-to-csv">Excel To CSV Converter</a></li>
+										<li><a href="#!/utilities/excel-to-xml">Excel To XML Converter</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#!/resources">Resources</a>
 								</li>
 							</ul>
 						</nav>
@@ -47,7 +107,12 @@
 			</div>
 			<div class="col-lg-4 page-content">
 				<div class="sidebar-module">
-				
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- eat-sleep-code.com Responsive Ad Unit -->
+					<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5953639159371540" data-ad-slot="6670955112" data-ad-format="auto"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
 				</div>
 			</div>
 		</div>
@@ -71,24 +136,42 @@
 			</div>
 		</footer>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-resource.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-route.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-sanitize.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-resource.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-route.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="/scripts/xml2json.min.js" ></script>
 		<script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>
 		<script type="text/javascript" src="/scripts/jquery.validate.min.js" defer="defer"></script>		
 		<script type="text/javascript" src="/scripts/render.min.js" defer="defer"></script>		
+		<script type="text/javascript" src="/scripts/prettify.min.js" defer="defer"></script>		
+		<script type="text/javascript" src="/scripts/repo.min.js" defer="defer"></script>	
 		<div id="fb-root"></div>
+		<script type="text/javascript">
+			(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1442336282690482&version=v2.0";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				prettyPrint();
+			});
+		</script>
 		<script type="text/javascript">
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			ga('create', '', '');
+			ga('create', 'UA-136336-13', 'eat-sleep-code.com');
 			ga('require', 'displayfeatures');
 			ga('send', 'pageview');
 		</script>
+		
 	</body>
 </html>
