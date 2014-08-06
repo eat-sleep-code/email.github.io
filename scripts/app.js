@@ -5,7 +5,7 @@ app.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {    
 		$routeProvider.      
 			/* Root */
-			when('/', {templateUrl: 'views/blog.html', controller: 'PostController'}).
+			when('/', {templateUrl: 'views/send.html', controller: 'PostController'}).
 			when('/send', {templateUrl: 'views/send.html', controller: 'PostController'}).
 			when('/send/:postID', {templateUrl: 'views/send.html', controller: 'PostController'}).
 			when('/contact', {templateUrl: 'views/contact.html', controller: 'DefaultController'}).
