@@ -27,8 +27,12 @@
 		<input type="email" id="FromEmailAddress" name="FromEmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
 	</div>
 	<div class="form-group" id="CaptchaRow">
-		<canvas id="CaptchaCanvas" class="captcha-canvas" />
-		<input type="text" id="Captcha" name="Captcha" maxlength="6" class="form-control form-control-narrow form-control-floated-left" placeholder="Type the code displayed in the image above." />
+		<div class="col-xs-6 col-md-4">
+			<canvas id="CaptchaCanvas" class="captcha-canvas" />
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<input type="text" id="Captcha" name="Captcha" maxlength="6" class="form-control" placeholder="Type the code displayed in the image." />
+		</div>
 	</div>
 	<button type="button" class="btn btn-default" id="ContactMessageSendButton">Send</button>
 </form>
