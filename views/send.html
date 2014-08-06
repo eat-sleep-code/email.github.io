@@ -22,11 +22,11 @@
 		<input type="checkbox" id="ReceiveEmailNotification" name="ReceiveEmailNotification" />
 		<label for="ReceiveEmailNotification">Yes, I would like to receive an email notification if the user responds to my message.</label>
 	</div>
-	<div class="form-group">
+	<div class="form-group" id="FromEmailAddressRow">
 		<label for="FromEmailAddress" class="sr-only legacy-label">Your Email Address</label>
 		<input type="email" id="FromEmailAddress" name="FromEmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
 	</div>
-	<div class="form-group" id="CaptchaControl">
+	<div class="form-group" id="CaptchaRow">
 		<canvas id="CaptchaCanvas" class="captcha-canvas" />
 		<input type="text" id="Captcha" name="Captcha" maxlength="6" class="form-control form-control-narrow form-control-floated-left" placeholder="Type the code displayed in the image above." />
 	</div>
@@ -37,8 +37,20 @@
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
 <script type="text/javascript">
 	$(document).ready(function () { 
+		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
 		$('#ContactMessageForm').show();
+		
+		// Toggle visibility of "From" email address row...
+		$('#ReceiveEmailNotification').click(function(){
+			var isEmailNotificationChecked = this.checked;
+			if(isEmailNotificationChecked == true) {
+				$('#FromEmailAddressRow').show();
+			}
+			else {
+				$('#FromEmailAddressRow').hide();	
+			}
+		});
 		
 		var securityCode = GenerateCaptcha('CaptchaCanvas');
 		var validator = $('#ContactMessageForm').validate({
