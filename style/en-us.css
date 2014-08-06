@@ -118,25 +118,11 @@ label.legacy-label
 }
 
 
-/* Form */
-.form-control-narrow
-{
-	width: 60%;
-}
-
-.form-control-floated-left
-{
-	float: left;
-}
-
-
-
 /* Captcha Control */
 .captcha-canvas
 {
 	width: 260px;
 	height: 50px;
-	float: left;
 }
 
 
