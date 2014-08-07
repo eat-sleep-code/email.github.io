@@ -78,7 +78,7 @@ $(document).ready(function () {
 	
 	// Toggle unsubscribed message based on recipient's email address...
 	$('#ToEmailAddress').blur(function() {
-		console.log('Datasource: ' + unsubscribeDatasourceRead);
+		//console.log('Datasource: ' + unsubscribeDatasourceRead);
 		$('#dataPlaceholder').sheetrock({
   			url: unsubscribeDatasourceRead,
   			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
@@ -92,12 +92,12 @@ $(document).ready(function () {
 			if (data.table.rows[0] !== undefined) {
 				$('#UnsubscribedAlert').show();
 				$('#MessageSendButton').attr("disabled", "disabled");
-				console.log('Email Address Already Unsubscribed');
+				//console.log('Email Address Already Unsubscribed');
 			}
 			else {
 				$('#UnsubscribedAlert').hide();
 				$('#MessageSendButton').removeAttr("disabled");
-				console.log('Email Address NOT Yet Unsubscribed');
+				//console.log('Email Address NOT Yet Unsubscribed');
 			}
 		}
 	});
