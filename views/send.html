@@ -51,8 +51,14 @@
 	$(document).ready(function () { 
 		$('#datatest').sheetrock({
   			url: messageDatasource,
-  			formatting: false
+  			formatting: false,
+  			dataHandler: testHandler
 		});
+		
+		function testHandler(data)
+		{
+			console.log(data);
+		}
 
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
