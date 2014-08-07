@@ -7,8 +7,8 @@
 	<div id="PostID"></div>
 </div>
 
-<div id="UserUnsubscribedAlert" class="alert alert-error">
-	User has unsubscribed.
+<div id="UserUnsubscribedAlert" class="alert alert-warning">
+	The user has unsubscribed from all messages from this service.
 </div>
 
 
@@ -88,12 +88,12 @@
 				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
 					$('#UserUnsubscribedAlert').show();
-					$('ContactMessageSendButton').attr("disabled", "disabled");
+					$('#ContactMessageSendButton').attr("disabled", "disabled");
 					console.log("Unsubscribed: true");
 				}
 				else {
 					$('#UserUnsubscribedAlert').hide();
-					$('ContactMessageSendButton').removeAttr("disabled");
+					$('#ContactMessageSendButton').removeAttr("disabled");
 					console.log("Unsubscribed: false");
 				}
 			}
