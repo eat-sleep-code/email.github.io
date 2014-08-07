@@ -1,6 +1,6 @@
 // Global Variables
 var serviceName = 'emailapp.eat-sleep-code.com';
-var serviceRootUrl = 'http://emailapp.eat-sleep-code.com';
+var serviceRootUrl = 'http://emailapp.eat-sleep-code.com/#!';
 var serviceEmail = 'info@eat-sleep-code.com';
 				
 // Data Connections
