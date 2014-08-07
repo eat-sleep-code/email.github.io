@@ -29,6 +29,12 @@ $(document).ready(function () {
 		}
 	});
 	
+	// Toggle visibility of "CAPTCHA" row...
+	if ($.cookie('ClearedCaptcha') !== undefined)
+	{
+		$('#CaptchaRow').hide();	
+	}
+	var securityCode = GenerateCaptcha('CaptchaCanvas');
 	
 	// Setup form field validation...
 	var validator = $('#UnsubscribeForm').validate({
