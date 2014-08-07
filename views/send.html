@@ -4,11 +4,11 @@
 <div id="ContactMessageSentAlert" class="alert alert-success">
 	Your message has been sent.  
 	To view responses to this message you will need the following code:
-	<div id="PostID"></div>
+	<span id="PostID"></span>
 </div>
 
 <div id="UserUnsubscribedAlert" class="alert alert-warning">
-	The user has unsubscribed from all messages from this service.
+	The recipient has unsubscribed from all messages from this service.   You can not send messages to this recipient.
 </div>
 
 <form role="form" id="ContactMessageForm">
@@ -104,8 +104,9 @@
 		{
 			$('#CaptchaRow').hide();	
 		}
-		
 		var securityCode = GenerateCaptcha('CaptchaCanvas');
+		
+		// Setup form field validation...
 		var validator = $('#ContactMessageForm').validate({
 			errorElement: 'div',
 			rules: {
