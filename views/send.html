@@ -58,8 +58,13 @@
 		function testHandler(data)
 		{
 			$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-			console.log('Row: ' + data.table.rows[0]);
-			console.log('Cell: ' + data.table.rows[0].c[0].v);
+			if (data.table.rows[0] !== undefined) {
+				console.log('Cell: ' + data.table.rows[0].c[0].v);
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 
 		// Set initial state of form...
