@@ -40,13 +40,13 @@ app.config(['$routeProvider', '$locationProvider',
 app.controller('DefaultController', function($scope) {});
 
 app.controller('MessageController', function($scope, $routeParams, $http) {
-	$scope.thread = $routeParams.threadID;
+	$scope.threadID = $routeParams.threadID;
 	$scope.data = '';
 	$scope.status = '';
 });
 
 app.controller('UnsubscribeController', function($scope, $routeParams, $http) {
-	$scope.email = $routeParams.emailAddress;
+	$scope.emailAddress = $routeParams.emailAddress;
 	$scope.data = '';
 	$scope.status = '';
 });
