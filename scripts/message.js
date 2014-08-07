@@ -28,9 +28,6 @@ $('#ContactMessageSendButton').click(function(e) {
 		if (form.valid() === true) {
 			if ($.trim($('#Message').val()).length >= 1) {
 			/* Send mail only if there is a message (basically prevent empty submissions if validation goes haywire)... */
-				var serviceName = 'emailapp.eat-sleep-code.com';
-				var serviceRootUrl = 'http://emailapp.eat-sleep-code.com';
-				var serviceEmail = 'info@eat-sleep-code.com';
 				var postID = $.trim($('#PostIDHidden').val());
 				var sender = $.trim($('#FromEmailAddress').val());;
 				var recipient = $.trim($('#ToEmailAddress').val());
