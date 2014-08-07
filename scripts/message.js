@@ -13,7 +13,7 @@ $('#MessageSendButton').click(function(e) {
 				var subject = $.trim($('#Subject').val());
 				var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />';
 				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/reply/'+threadID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
-				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+ToEmailAddress+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
+				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+recipient+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
 			
 				// Check To Make Sure Recipient Hasn't Blocked Service
 				var recipientCleared = true;
