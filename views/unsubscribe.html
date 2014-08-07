@@ -1,29 +1,32 @@
 <h1>Unsubscribe</h1>
 <br />
 
-
-
-<div id="UserUnsubscribedAlert" class="alert alert-warning">
-	This email address has been unsubscribed from this service.   Thank you.
+<div id="UnsubscribedAlert" class="alert alert-warning">
+	This email address has been unsubscribed from this service.
 </div>
 
 <form role="form" id="UnsubscribeForm">
-		<label for="ToEmailAddress" class="sr-only legacy-label">Your Email Address</label>
-		<input type="email" id="ToEmailAddress" name="ToEmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
+	<div class="form-group row">
+		<label for="EmailAddress" class="sr-only legacy-label">Your Email Address</label>
+		<input type="email" id="EmailAddress" name="EmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
+	</div>
+	<div class="form-group row">
+		<button type="button" class="btn btn-default" id="UnsubscribeButton">Unsubscribe</button>
+	</div>
 </form>
 <div id="dataPlaceholder"></div>
 
 <script type="text/javascript">
 	$(document).ready(function () { 
 		// Set initial state of form...
-		$('#UserUnsubscribedAlert').hide();
+		$('#UnsubscribedAlert').hide();
 		$('#UnsubscribeForm').show();
 		
-		// Toggle already unsubscribed message based on recipient's email address...
-		$('#ToEmailAddress').blur(function() {
+		// Toggle already unsubscribed message based on user's email address...
+		$('#EmailAddress').blur(function() {
 			$('#dataPlaceholder').sheetrock({
 	  			url: unsubscribeDatasource,
-	  			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
+	  			sql: "select B where B = '" + $("#EmailAddress").val() + "'",
 				formatting: false,
 	  			dataHandler: isUserUnsubscribed
 			});
@@ -32,12 +35,12 @@
 			{
 				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
-					$('#UserUnsubscribedAlert').show();
+					$('#UnsubscribedAlert').show();
 					$('#UnsubscribeButton').attr("disabled", "disabled");
 					// console.log("Unsubscribed: true");
 				}
 				else {
-					$('#UserUnsubscribedAlert').hide();
+					$('#UnsubscribedAlert').hide();
 					$('#UnsubscribeButton').removeAttr("disabled");
 					// console.log("Unsubscribed: false");
 				}
@@ -49,10 +52,10 @@
 		var validator = $('#UnsubscribeForm').validate({
 			errorElement: 'div',
 			rules: {
-				ToEmailAddress: {required: true, email: true}
+				EmailAddress: {required: true, email: true}
 			},
 			messages: {
-				ToEmailAddress: {required: 'Please enter your email address.', email: 'Please enter a valid email address.'},
+				EmailAddress: {required: 'Please enter your email address.', email: 'Please enter a valid email address.'},
 			},
 			errorPlacement: function (error, element) {
 				$(error).insertBefore($(element));
@@ -74,4 +77,40 @@
 			}
 		});
 	});
+	
+	/* Assign an OnClick function to items in the "Send" button */
+	$('#UnsubscribeButton').click(function(e) {
+		$(document).ready(function () {
+			var form = $('#UnsubscribeForm');
+			form.validate();
+			if (form.valid() === true) {
+				var emailAddress = $.trim($('#EmailAddress').val());
+				
+				// Save To Database
+				$.ajax({
+					url: "https://docs.google.com/forms/d/1Q79Y1ETyJU0ffMreELbiIY5qf2OjGdeyNrzNMXip2Lc/formResponse",
+					data: {
+						"entry_940157897": emailAddress
+					},
+					type: "POST",
+					dataType: "xml",
+					statusCode: {
+						0: function () {
+							$('#UnsubscribedAlert').show();
+							$('#UnsubscribeForm').hide();
+						},
+						200: function () {
+							$('#UnsubscribedAlert').show();
+							$('#UnsubscribeForm').hide();
+						}
+					}
+				});
+			}	
+			$(window).scrollTop(0);
+			
+		});
+	});  
+
 </script>
+
+
