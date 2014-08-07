@@ -50,7 +50,8 @@
 	$(document).ready(function () { 
 		$('#datatest').sheetrock({
   			url: unsubscribeDatasource,
-  			formatting: false,
+  			sql: "select B where B = 'blocked@eat-sleep-code.com'",
+			formatting: false,
   			dataHandler: testHandler
 		});
 		
