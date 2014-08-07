@@ -8,6 +8,8 @@
 	
 </div>
 
+<div id="datatest"></div>
+
 <form role="form" id="ContactMessageForm">
 	<div class="form-group row">
     	<label for="ToEmailAddress" class="sr-only legacy-label">Recipient's Email Address</label>
@@ -47,6 +49,10 @@
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
 <script type="text/javascript">
 	$(document).ready(function () { 
+		$('#datatest').sheetrock({
+  url: datasource
+});
+
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
 		$('#ContactMessageForm').show();
