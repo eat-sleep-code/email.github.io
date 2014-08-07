@@ -1,5 +1,5 @@
-var messageDatasource='https://docs.google.com/spreadsheets/d/1A489xTOwSGT3dYNiqhyzB6JvHk8rMUjhAjOQ_bSCDWQ';
-var unsubscribeDatasource='https://docs.google.com/spreadsheets/d/1wUilI5prEx6ocuCh91Za_uc_F2cOZx3zzamMO46hSx8';
+var messageDatasource='https://docs.google.com/spreadsheets/d/1A489xTOwSGT3dYNiqhyzB6JvHk8rMUjhAjOQ_bSCDWQ#gid=0';
+var unsubscribeDatasource='https://docs.google.com/spreadsheets/d/1wUilI5prEx6ocuCh91Za_uc_F2cOZx3zzamMO46hSx8#gid=0';
 
 var app = angular.module('eatsleepcode', ['ngRoute', 'ngSanitize']); 
 
