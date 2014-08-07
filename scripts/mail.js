@@ -1,4 +1,4 @@
-sendMail(sender, senderName, recipient, subject, message) {
+function sendMail(sender, senderName, recipient, subject, message) {
 	$.ajax({
 		type: 'POST',
 		url: 'https://mandrillapp.com/api/1.0/messages/send.json',  
