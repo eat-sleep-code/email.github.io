@@ -1,29 +1,7 @@
-function sendMail(sender, senderName, recipient, subject, message) {
-	$.ajax({
-		type: 'POST',
-		url: 'https://mandrillapp.com/api/1.0/messages/send.json',  
-		data: {
-			/* Confirm API key before use! */
-			'key': 'f--yiGIPJLzYgQR-i2XWSg', 
-			'message': {
-				'from_email': 'info@eat-sleep-code.com',
-				'from_name': senderName,
-				'to': [{'email': recipient, 'type': 'to'}],
-				'autotext': 'true',
-				'subject': subject,
-				'html': message,
-				'auto_html': true,
-				'auto_text': true
-			}
-	    	}
-	});
-}
-
-
 /* Assign an OnClick function to items in the "Send" button */
-$('#ContactMessageSendButton').click(function(e) {
+$('#MessageSendButton').click(function(e) {
 	$(document).ready(function () {
-		var form = $('#ContactMessageForm');
+		var form = $('#MessageForm');
 		form.validate();
 		if (form.valid() === true) {
 			if ($.trim($('#Message').val()).length >= 1) {
@@ -42,7 +20,7 @@ $('#ContactMessageSendButton').click(function(e) {
 				if (recipientCleared == true) {
 					// Save To Database
 					$.ajax({
-						url: "https://docs.google.com/forms/d/1Q79Y1ETyJU0ffMreELbiIY5qf2OjGdeyNrzNMXip2Lc/formResponse",
+						url: messageDatasourceWrite,
 						data: { 
 							"entry_1063432399": postID, 
 							"entry_274482486": sender, 
@@ -64,8 +42,8 @@ $('#ContactMessageSendButton').click(function(e) {
 						}
 					});
 	
-					$('#ContactMessageSentAlert').show();
-					$('#ContactMessageForm').hide();
+					$('#MessageSentAlert').show();
+					$('#MessageForm').hide();
 					$.cookie('ClearedCaptcha', 'true', { expires: 7, path: '/' });
 				}
 			}	
