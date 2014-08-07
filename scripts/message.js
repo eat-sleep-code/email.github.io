@@ -58,7 +58,7 @@ $(document).ready(function () {
 	$('#MessageSentAlert').hide();
 	$('#UnsubscribedAlert').hide();
 	$('#MessageForm').show();
-	$('#EmailAddressRow').hide();
+	$('#FromEmailAddressRow').hide();
 	
 	// Create this post's GUID...
 	var uuid = generateUUID();
