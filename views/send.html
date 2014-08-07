@@ -48,24 +48,26 @@
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
 <script type="text/javascript">
 	$(document).ready(function () { 
+		var recipientEmailAddress = 'blocked3@eat-sleep-code.com';
+		var isRecipientUnsubscribed = false;
 		$('#datatest').sheetrock({
   			url: unsubscribeDatasource,
-  			sql: "select B where B = 'blocked3@eat-sleep-code.com'",
+  			sql: "select B where B = '" + recipientEmailAddress + "'",
 			formatting: false,
   			dataHandler: testHandler
 		});
 		
 		function testHandler(data)
 		{
-			$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+			//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 			if (data.table.rows[0] !== undefined) {
-				console.log('Cell: ' + data.table.rows[0].c[0].v);
-				return true;
+				isRecipientUnsubscribed == true;
 			}
 			else {
-				return false;
+				isRecipientUnsubscribed == false;
 			}
 		}
+		
 
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
