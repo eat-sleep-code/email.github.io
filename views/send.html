@@ -48,27 +48,6 @@
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
 <script type="text/javascript">
 	$(document).ready(function () { 
-		var recipientEmailAddress = 'blocked3@eat-sleep-code.com';
-		var isRecipientUnsubscribed = false;
-		$('#datatest').sheetrock({
-  			url: unsubscribeDatasource,
-  			sql: "select B where B = '" + recipientEmailAddress + "'",
-			formatting: false,
-  			dataHandler: testHandler
-		});
-		
-		function testHandler(data)
-		{
-			//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-			if (data.table.rows[0] !== undefined) {
-				isRecipientUnsubscribed == true;
-			}
-			else {
-				isRecipientUnsubscribed == false;
-			}
-		}
-		
-
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
 		$('#ContactMessageForm').show();
@@ -88,6 +67,29 @@
 			else {
 				$('#FromEmailAddressRow').hide();	
 			}
+		});
+		
+		// Toggle unsubscribed message based on recipient's email address...
+		$( "#ToEmailAddress" ).blur(function() {
+			var isRecipientUnsubscribed = false;
+			$('#datatest').sheetrock({
+	  			url: unsubscribeDatasource,
+	  			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
+				formatting: false,
+	  			dataHandler: testHandler
+			});
+		
+			function testHandler(data)
+			{
+				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+				if (data.table.rows[0] !== undefined) {
+					isRecipientUnsubscribed == true;
+				}
+				else {
+					isRecipientUnsubscribed == false;
+				}
+			}
+			console.log(isRecipientUnsubscribed);
 		});
 		
 		// Toggle visibility of "CAPTCHA" row...
