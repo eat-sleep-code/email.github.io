@@ -71,7 +71,6 @@
 		
 		// Toggle unsubscribed message based on recipient's email address...
 		$( "#ToEmailAddress" ).blur(function() {
-			var isRecipientUnsubscribed = false;
 			$('#datatest').sheetrock({
 	  			url: unsubscribeDatasource,
 	  			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
@@ -83,13 +82,13 @@
 			{
 				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
-					isRecipientUnsubscribed == true;
+					console.log(true);
 				}
 				else {
-					isRecipientUnsubscribed == false;
+					console.log(false);
 				}
 			}
-			console.log(isRecipientUnsubscribed);
+			
 		});
 		
 		// Toggle visibility of "CAPTCHA" row...
