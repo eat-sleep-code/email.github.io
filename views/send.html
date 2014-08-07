@@ -58,6 +58,7 @@
 		function testHandler(data)
 		{
 			$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+			console.log(data.table.rows[0]);
 			console.log(data.table.rows[0].c[0].v);
 		}
 
