@@ -73,6 +73,7 @@ $(document).ready(function () {
 		$('#ThreadID').html(threadID);
 	}
 	else {
+		console.log("SQL: select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'");
 		$('#ToEmailAddressRow').hide();
 		$('#dataPlaceholder').sheetrock({
   			url: messageDatasourceRead,
