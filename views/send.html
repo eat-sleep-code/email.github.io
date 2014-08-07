@@ -88,15 +88,14 @@
 				if (data.table.rows[0] !== undefined) {
 					$('#UserUnsubscribedAlert').show();
 					$('#ContactMessageSendButton').attr("disabled", "disabled");
-					console.log("Unsubscribed: true");
+					// console.log("Unsubscribed: true");
 				}
 				else {
 					$('#UserUnsubscribedAlert').hide();
 					$('#ContactMessageSendButton').removeAttr("disabled");
-					console.log("Unsubscribed: false");
+					// console.log("Unsubscribed: false");
 				}
 			}
-			
 		});
 		
 		// Toggle visibility of "CAPTCHA" row...
