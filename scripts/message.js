@@ -6,13 +6,14 @@ $('#MessageSendButton').click(function(e) {
 		if (form.valid() === true) {
 			if ($.trim($('#Message').val()).length >= 1) {
 			/* Send mail only if there is a message (basically prevent empty submissions if validation goes haywire)... */
-				var postID = $.trim($('#MessageIDHidden').val());
+				var messageID = $.trim($('#MessageIDHidden').val());
+				var threadID = $.trim($('#ThreadIDHidden').val());
 				var sender = $.trim($('#FromEmailAddress').val());;
 				var recipient = $.trim($('#ToEmailAddress').val());
 				var subject = $.trim($('#Subject').val());
 				var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />';
-				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/message/'+postID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
-				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+postID+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
+				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/reply/'+threadID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
+				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+ToEmailAddress+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
 			
 				// Check To Make Sure Recipient Hasn't Blocked Service
 				var recipientCleared = true;
@@ -22,7 +23,8 @@ $('#MessageSendButton').click(function(e) {
 					$.ajax({
 						url: messageDatasourceWrite,
 						data: { 
-							"entry_1063432399": postID, 
+							"entry_184866599": messageID,
+							"entry_1063432399": threadID, 
 							"entry_274482486": sender, 
 							"entry_692194785": recipient, 
 							"entry_848437565": subject, 
@@ -60,11 +62,44 @@ $(document).ready(function () {
 	$('#MessageForm').show();
 	$('#FromEmailAddressRow').hide();
 	
-	// Create this post's GUID...
-	var uuid = generateUUID();
-	$('#MessageIDHidden').val(uuid);
-	$('#MessageID').html(uuid);
+	// Create this message's GUID...
+	var messageID = generateUUID();
+	$('#MessageIDHidden').val(messageID);
 	
+	// Create this thread's GUID...
+	if (!$('#ThreadIDHidden').val()) {
+		var threadID = generateUUID();
+		$('#ThreadIDHidden').val(threadID);
+		$('#ThreadID').html(threadID);
+	}
+	else {
+		$('#ToEmailAddressRow').hide();
+		$('#dataPlaceholder').sheetrock({
+  			url: messageDatasourceRead,
+  			sql: "select A,B,C,D,E where G = '" + $("#MessageIDHidden").val() + "'",
+			formatting: false,
+  			dataHandler: getMessageData
+		});
+	
+		function getMessageData(data)
+		{
+			$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+		/*	
+			if (data.table.rows[0] !== undefined) {
+				$('#UnsubscribedAlert').show();
+				$('#MessageSendButton').attr("disabled", "disabled");
+				//console.log('Email Address Already Unsubscribed');
+			}
+			else {
+				$('#UnsubscribedAlert').hide();
+				$('#MessageSendButton').removeAttr("disabled");
+				//console.log('Email Address NOT Yet Unsubscribed');
+			}
+		*/
+		}
+	}
+	
+
 	// Toggle visibility of "From" email address row...
 	$('#ReceiveEmailNotification').click(function(){
 		var isEmailNotificationChecked = this.checked;
