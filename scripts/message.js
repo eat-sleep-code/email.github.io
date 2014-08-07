@@ -6,12 +6,12 @@ $('#MessageSendButton').click(function(e) {
 		if (form.valid() === true) {
 			if ($.trim($('#Message').val()).length >= 1) {
 			/* Send mail only if there is a message (basically prevent empty submissions if validation goes haywire)... */
-				var postID = $.trim($('#PostIDHidden').val());
+				var postID = $.trim($('#MessageIDHidden').val());
 				var sender = $.trim($('#FromEmailAddress').val());;
 				var recipient = $.trim($('#ToEmailAddress').val());
 				var subject = $.trim($('#Subject').val());
 				var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />';
-				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/reply/'+postID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
+				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/message/'+postID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
 				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+postID+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
 			
 				// Check To Make Sure Recipient Hasn't Blocked Service
@@ -79,7 +79,7 @@ $(document).ready(function () {
 	// Toggle unsubscribed message based on recipient's email address...
 	$('#ToEmailAddress').blur(function() {
 		$('#dataPlaceholder').sheetrock({
-  			url: unsubscribeDatasource,
+  			url: unsubscribeDatasourceRead,
   			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
 			formatting: false,
   			dataHandler: isUserUnsubscribed
