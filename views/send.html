@@ -5,8 +5,12 @@
 	Your message has been sent.  
 	To view responses to this message you will need the following code:
 	<div id="PostID"></div>
-	
 </div>
+
+<div id="UserUnsubscribedAlert" class="alert alert-error">
+	User has unsubscribed.
+</div>
+
 
 <form role="form" id="ContactMessageForm">
 	<div class="form-group row">
@@ -50,6 +54,7 @@
 	$(document).ready(function () { 
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
+		$('#UserUnsubscribedAlert').hide();
 		$('#ContactMessageForm').show();
 		$('#FromEmailAddressRow').hide();
 		
@@ -82,11 +87,11 @@
 			{
 				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
-					$('#UserUnsubscribed').show();
+					$('#UserUnsubscribedAlert').show();
 					$('ContactMessageSendButton').attr("disabled", "disabled");
 				}
 				else {
-					$('#UserUnsubscribed').hide();
+					$('#UserUnsubscribedAlert').hide();
 					$('ContactMessageSendButton').removeAttr("disabled");
 				}
 			}
