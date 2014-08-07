@@ -70,22 +70,24 @@
 		});
 		
 		// Toggle unsubscribed message based on recipient's email address...
-		$( "#ToEmailAddress" ).blur(function() {
-			$('#datatest').sheetrock({
+		$('#ToEmailAddress').blur(function() {
+			$('#dataPlaceholder').sheetrock({
 	  			url: unsubscribeDatasource,
 	  			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
 				formatting: false,
-	  			dataHandler: testHandler
+	  			dataHandler: isUserUnsubscribed
 			});
 		
-			function testHandler(data)
+			function isUserUnsubscribed(data)
 			{
 				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
-					console.log(true);
+					$('#UserUnsubscribed').show();
+					$('ContactMessageSendButton').attr("disabled", "disabled");
 				}
 				else {
-					console.log(false);
+					$('#UserUnsubscribed').hide();
+					$('ContactMessageSendButton').removeAttr("disabled");
 				}
 			}
 			
