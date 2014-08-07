@@ -76,7 +76,7 @@ $(document).ready(function () {
 		$('#ToEmailAddressRow').hide();
 		$('#dataPlaceholder').sheetrock({
   			url: messageDatasourceRead,
-  			sql: "select A,B,C,D,E where G = '" + $("#MessageIDHidden").val() + "'",
+  			sql: "select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'",
 			formatting: false,
   			dataHandler: getMessageData
 		});
