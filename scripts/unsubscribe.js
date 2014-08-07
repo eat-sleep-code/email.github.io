@@ -4,7 +4,7 @@ $(document).ready(function () {
 	$('#UnsubscribeForm').show();
 	
 	// Toggle already unsubscribed message based on user's email address...
-	$('#EmailAddress').blur(function() {
+	function CheckSubscriptionStatus() {
 		//console.log('Datasource: ' + unsubscribeDatasourceRead);
 		$('#dataPlaceholder').sheetrock({
   			url: unsubscribeDatasourceRead,
@@ -27,11 +27,11 @@ $(document).ready(function () {
 				//console.log('Email Address NOT Yet Unsubscribed');
 			}
 		}
-	});
-	if ($('#EmailAddress').val().trim().length > 0)
-	{
-		$('#EmailAddress').blur();
 	}
+	CheckSubscriptionStatus();
+	$('#EmailAddress').blur(function() {
+		CheckSubscriptionStatus();
+	});
 	
 	// Toggle visibility of "CAPTCHA" row...
 	if ($.cookie('ClearedCaptcha') !== undefined)
