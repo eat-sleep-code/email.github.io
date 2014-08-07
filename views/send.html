@@ -50,8 +50,9 @@
 <script type="text/javascript">
 	$(document).ready(function () { 
 		$('#datatest').sheetrock({
-  url: messageDatasource
-});
+  			url: messageDatasource,
+  			formatting: false
+		});
 
 		// Set initial state of form...
 		$('#ContactMessageSentAlert').hide();
