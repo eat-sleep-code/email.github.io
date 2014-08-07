@@ -8,8 +8,6 @@
 	
 </div>
 
-<table id="datatest">cells.subject</table>
-
 <form role="form" id="ContactMessageForm">
 	<div class="form-group row">
     	<label for="ToEmailAddress" class="sr-only legacy-label">Recipient's Email Address</label>
@@ -44,6 +42,7 @@
 		<button type="button" class="btn btn-default" id="ContactMessageSendButton">Send</button>
 	</div>
 </form>
+<div id="dataPlaceholder"></div>
 
 <script type="text/javascript" src="/scripts/mail.js" defer="defer"></script>
 <script type="text/javascript" src="/scripts/captcha.min.js" defer="defer"></script>
@@ -57,7 +56,7 @@
 		
 		function testHandler(data)
 		{
-			console.log(data);
+			dataPlaceholder.html(data);
 		}
 
 		// Set initial state of form...
