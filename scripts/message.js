@@ -51,3 +51,97 @@ $('#MessageSendButton').click(function(e) {
 		}
 	});
 });  
+
+
+$(document).ready(function () { 
+	// Set initial state of form...
+	$('#MessageSentAlert').hide();
+	$('#UnsubscribedAlert').hide();
+	$('#MessageForm').show();
+	$('#EmailAddressRow').hide();
+	
+	// Create this post's GUID...
+	var uuid = generateUUID();
+	$('#MessageIDHidden').val(uuid);
+	$('#MessageID').html(uuid);
+	
+	// Toggle visibility of "From" email address row...
+	$('#ReceiveEmailNotification').click(function(){
+		var isEmailNotificationChecked = this.checked;
+		if(isEmailNotificationChecked == true) {
+			$('#FromEmailAddressRow').show();
+		}
+		else {
+			$('#FromEmailAddressRow').hide();	
+		}
+	});
+	
+	// Toggle unsubscribed message based on recipient's email address...
+	$('#ToEmailAddress').blur(function() {
+		$('#dataPlaceholder').sheetrock({
+  			url: unsubscribeDatasource,
+  			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
+			formatting: false,
+  			dataHandler: isUserUnsubscribed
+		});
+	
+		function isUserUnsubscribed(data)
+		{
+			//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+			if (data.table.rows[0] !== undefined) {
+				$('#UnsubscribedAlert').show();
+				$('#MessageSendButton').attr("disabled", "disabled");
+				// console.log("Unsubscribed: true");
+			}
+			else {
+				$('#UnsubscribedAlert').hide();
+				$('#MessageSendButton').removeAttr("disabled");
+				// console.log("Unsubscribed: false");
+			}
+		}
+	});
+	
+	// Toggle visibility of "CAPTCHA" row...
+	if ($.cookie('ClearedCaptcha') !== undefined)
+	{
+		$('#CaptchaRow').hide();	
+	}
+	var securityCode = GenerateCaptcha('CaptchaCanvas');
+	
+	// Setup form field validation...
+	var validator = $('#MessageForm').validate({
+		errorElement: 'div',
+		rules: {
+			ToEmailAddress: {required: true, email: true},
+			Subject: {required: true},
+			Message: {required: true},
+			Captcha: {required: true, captcha: securityCode},
+			FromEmailAddress: {required: true, email: true}
+		},
+		messages: {
+			ToEmailAddress: {required: 'Please enter the recipient\'s email address.', email: 'Please enter a valid email address.'},
+			Subject: {required: 'Please enter a subject.'},
+			Message: {required: 'Please enter a message.'},
+			Captcha: {required: 'Please type the code displayed in the image.', captcha: 'The code you typed did not match the image displayed.'},
+			FromEmailAddress: {required: 'You have indicated that you would like to receive an email notification if the recipient responds to your message.   Please enter your email address.', email: 'Please enter a valid email address.'}
+		},
+		errorPlacement: function (error, element) {
+			$(error).insertBefore($(element));
+		},
+		highlight: function(element, errorClass) {				
+			$(element).parent('div').addClass('has-error');
+		},			
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parent('div').removeClass('has-error');
+		},
+		onfocusout: false,
+		invalidHandler: function(event, validator){
+			setTimeout(function(){
+				$('input:text').blur();
+				$('textarea').blur();
+				// Pseudo of input:email is not recognized by jQuery yet, so have to target the email fields individually.
+				$('#EmailAddress').blur();
+			}, 10);
+		}
+	});		
+});
