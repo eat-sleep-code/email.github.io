@@ -122,7 +122,7 @@ $(document).ready(function () {
 					var fromAddress = data.table.rows[0].c[2].v;
 					if (fromAddress !== 'ANONYMOUS') {
 						$('#FromEmailAddress').val();
-					});
+					}
 				}
 			}
 			$('#ThreadID').html($('#ThreadIDHidden').val());
