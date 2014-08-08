@@ -74,11 +74,10 @@ $(document).ready(function () {
 			$('#ThreadID').html(threadID);
 		}
 		else {
-			console.log("SQL: select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'");
-			$('#ToEmailAddressRow').hide();
+			console.log("SQL: select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'");
 			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'",
+	  			sql: "select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'",
 				formatting: false,
 	  			dataHandler: getMessageData
 			});
@@ -88,9 +87,13 @@ $(document).ready(function () {
 				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				
 				if (data.table.rows[0] !== undefined) {
-					console.log('Re: ' + data.table.rows[0].c[3])
+					$('#ToEmailAddressRow').hide();
+					$('#ToEmailAddress').val(data.table.rows[0].c[5].v);
 					$('#Subject').val('Re: ' + data.table.rows[0].c[3].v);
-					//console.log('Email Address Already Unsubscribed');
+					$('#ReceiveEmailNotification').attr('checked','checked');
+					$('#FromEmailAddressRow').show();
+					$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
+					
 				}
 			}
 		}
@@ -103,7 +106,8 @@ $(document).ready(function () {
 			$('#FromEmailAddressRow').show();
 		}
 		else {
-			$('#FromEmailAddressRow').hide();	
+			$('#FromEmailAddressRow').hide();
+			$('#FromEmailAddressRow').val();
 		}
 	});
 	
