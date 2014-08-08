@@ -80,7 +80,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
-			$('#Table tbody tr td:first-of-type').each(function()
+			$('#Thread tbody tr td:first-of-type').each(function()
 			{
 				var currentVal = $(this).html().trim();
 				var date = new Date(currentVal);
