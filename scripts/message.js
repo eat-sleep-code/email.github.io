@@ -1,6 +1,10 @@
 /* Assign an OnClick function to items in the "Send" button */
 $('#MessageSendButton').click(function(e) {
 	$(document).ready(function () {
+		// Make sure "From" email address is not submitted if user didn't check the box to allow reply notifications...
+		if(isEmailNotificationChecked == false) {
+			$('#FromEmailAddress').val('');
+		}
 		var form = $('#MessageForm');
 		form.validate();
 		if (form.valid() === true) {
@@ -106,7 +110,6 @@ $(document).ready(function () {
 			$('#FromEmailAddressRow').show();
 		}
 		else {
-			$('#FromEmailAddress').val('');
 			$('#FromEmailAddressRow').hide();
 		}
 	});
