@@ -95,8 +95,6 @@ $('#ThreadRetrievalButton').click(function(e) {
 				var hours = unformattedDate.getHours();
 				var minutes = unformattedDate.getMinutes();
 				var seconds = unformattedDate.getSeconds();
-				if(dd<10){dd='0'+dd}
-				if(mm<10){mm='0'+mm}
 				d=mm+'/'+dd+'/'+yyyy+' '+hours+':'+minutes+':'+seconds
 				console.log(d);
 			});
