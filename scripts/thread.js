@@ -78,35 +78,34 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
+			
+			setTimeout(function() {
+				// Cleanup date formatting from Google's format
+				$('#Thread tbody tr td:first-child').each(function()
+				{
+					var currentVal = $(this).html().trim();
+					var unformattedDate = new Date(currentVal);
+					
+					var dd = pad(unformattedDate.getDate(), 2);
+					var mm = pad(unformattedDate.getMonth()+1, 2);
+					var yyyy = pad(unformattedDate.getFullYear(), 4);
+					var hours = pad(unformattedDate.getHours(), 2);
+					var hours12 = hours % 12 || 12; 
+					var minutes = pad(unformattedDate.getMinutes(), 2);
+					var seconds = pad(unformattedDate.getSeconds(), 2);
+					var tt = 'am';
+					if (hours >= 12) { 
+						tt = 'pm';
+					}
+					d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt;
+					$(this).html(d);
+					//console.log(d);
+				});
+				$('#ThreadRetrievalForm').hide();
+				$('#ThreadContainer').show();
+			}, 1000);
+			$(window).scrollTop(0);
 		}	
-		
-		setTimeout(function() {
-			// Cleanup date formatting from Google's format
-			$('#Thread tbody tr td:first-child').each(function()
-			{
-				var currentVal = $(this).html().trim();
-				var unformattedDate = new Date(currentVal);
-				
-				var dd = pad(unformattedDate.getDate(), 2);
-				var mm = pad(unformattedDate.getMonth()+1, 2);
-				var yyyy = pad(unformattedDate.getFullYear(), 4);
-				var hours = pad(unformattedDate.getHours(), 2);
-				var hours12 = hours % 12 || 12; 
-				var minutes = pad(unformattedDate.getMinutes(), 2);
-				var seconds = pad(unformattedDate.getSeconds(), 2);
-				var tt = 'am';
-				if (hours >= 12) { 
-					tt = 'pm';
-				}
-				d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt;
-				$(this).html(d);
-				//console.log(d);
-			});
-			$('#ThreadRetrievalForm').hide();
-			$('#ThreadContainer').show();
-		}, 1000);
-		$(window).scrollTop(0);
-		
 	});
 });
 
