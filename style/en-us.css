@@ -3,7 +3,7 @@
 body 
 {
 	padding-top: 50px;
-	font-family: 'oxygenregular', 'Helvetica';
+	font-family: 'Roboto', sans-serif;
 }
 
 label 
@@ -115,7 +115,7 @@ label.legacy-label
 .placeholder, :placeholder
 {
 	color: rgba(170, 170, 170, 1.0);
-	font-family: 'oxygenregular', 'Helvetica';	
+	font-family: 'Roboto', sans-serif;	
 }
 
 .has-error .error
