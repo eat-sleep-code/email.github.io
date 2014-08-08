@@ -67,6 +67,9 @@ $('#MessageSendButton').click(function(e) {
 					});
 	
 					$('#MessageSentAlert').show();
+					if(isEmailNotificationChecked === true) {
+						$('#WillReceiveEmailNotification').show();
+					}
 					$('#MessageForm').hide();
 					$.cookie('ClearedCaptcha', 'true', { expires: 7, path: '/' });
 				}
