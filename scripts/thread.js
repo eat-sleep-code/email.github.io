@@ -93,9 +93,14 @@ $('#ThreadRetrievalButton').click(function(e) {
 				var mm = pad(unformattedDate.getMonth()+1, 2);
 				var yyyy = pad(unformattedDate.getFullYear(), 4);
 				var hours = pad(unformattedDate.getHours(), 2);
+				var hours12 = hours % 12 || 12; 
 				var minutes = pad(unformattedDate.getMinutes(), 2);
 				var seconds = pad(unformattedDate.getSeconds(), 2);
-				d=mm+'/'+dd+'/'+yyyy+' '+hours+':'+minutes+':'+seconds
+				var tt = 'am';
+				if (hours >= 12) { 
+					tt = 'pm'
+				}
+				d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt
 				console.log(d);
 			});
 		}, 1000);
