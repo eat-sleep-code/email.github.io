@@ -74,11 +74,17 @@ label.legacy-label
 	height: 50px;
 }
 
+/* Table */
+#Thread thead tr td:first-of-type, #Thread tbody tr td:first-of-type
+{
+	width: 100px;
+}
+
 
 /* Bootstrap Customizations */
 .container-fluid
 {
-	max-width: 1880px !important;
+	max-width: 1440px !important;
 }
 
 .dropdown-header
@@ -144,15 +150,6 @@ label.legacy-label
 }
 
 
-
-
-
-
-
-#Thread thead tr td:first-of-type, #Thread tbody tr td:first-of-type
-{
-	width: 100px;
-}
 
 
 
