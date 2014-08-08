@@ -2,6 +2,7 @@ $(document).ready(function () {
 	// Set initial state of form...
 	$('#InvalidThreadIDAlert').hide();
 	$('#ThreadRetrievalForm').show();
+	$('#ThreadContainer').hide();
 	
 	// Toggle already unsubscribed message based on user's email address...
 	$('#ThreadID').blur(function() {
