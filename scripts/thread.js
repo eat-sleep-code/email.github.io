@@ -39,7 +39,7 @@ $(document).ready(function () {
 			ThreadID: {required: true}
 		},
 		messages: {
-			ThreadID: {required: 'Please enter your message retrieval code.'},
+			ThreadID: {required: 'Please enter your message access code.'},
 		},
 		errorPlacement: function (error, element) {
 			$(error).insertBefore($(element));
