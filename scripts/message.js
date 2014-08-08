@@ -74,7 +74,7 @@ $(document).ready(function () {
 			$('#ThreadID').html(threadID);
 		}
 		else {
-			console.log("SQL: select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'");
+			//console.log("SQL: select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'");
 			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
 	  			sql: "select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'",
@@ -84,8 +84,7 @@ $(document).ready(function () {
 		
 			function getMessageData(data)
 			{
-				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-				
+				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				if (data.table.rows[0] !== undefined) {
 					$('#ToEmailAddressRow').hide();
 					if (data.table.rows[0].c[5] !== null) {
@@ -107,8 +106,8 @@ $(document).ready(function () {
 			$('#FromEmailAddressRow').show();
 		}
 		else {
-			$('#FromEmailAddressRow').hide();
 			$('#FromEmailAddressRow').val('');
+			$('#FromEmailAddressRow').hide();
 		}
 	});
 	
