@@ -84,6 +84,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 			$('#Thread tbody tr').each(function()
 			{
 				console.log('Found something...');
+				/*
 				var currentVal = $(this).html().trim();
 				var date = new Date(currentVal);
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
