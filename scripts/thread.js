@@ -80,6 +80,12 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
+			$('#Table tbody tr td:first-of-type').each(function()
+			{
+				var currentVal = $(this).html().trim();
+				var date = new Date(currentVal);
+				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
+			});
 		}	
 		$(window).scrollTop(0);
 		$('#ThreadRetrievalForm').hide();
