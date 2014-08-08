@@ -2,7 +2,7 @@
 $('#MessageSendButton').click(function(e) {
 	$(document).ready(function () {
 		// Make sure "From" email address is not submitted if user didn't check the box to allow reply notifications...
-		if(isEmailNotificationChecked == false) {
+		if(isEmailNotificationChecked === false) {
 			$('#FromEmailAddress').val('');
 		}
 		var form = $('#MessageForm');
@@ -35,7 +35,7 @@ $('#MessageSendButton').click(function(e) {
 				// Check To Make Sure Recipient Hasn't Blocked Service
 				var recipientCleared = true;
 				
-				if (recipientCleared == true) {
+				if (recipientCleared === true) {
 					// Save To Database
 					$.ajax({
 						url: messageDatasourceWrite,
@@ -123,7 +123,7 @@ $(document).ready(function () {
 	// Toggle visibility of "From" email address row...
 	$('#ReceiveEmailNotification').click(function(){
 		var isEmailNotificationChecked = this.checked;
-		if(isEmailNotificationChecked == true) {
+		if(isEmailNotificationChecked === true) {
 			$('#FromEmailAddressRow').show();
 		}
 		else {
