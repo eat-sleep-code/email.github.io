@@ -3,7 +3,6 @@ $('#MessageSendButton').click(function(e) {
 	$(document).ready(function () {
 		// Make sure "From" email address is not submitted if user didn't check the box to allow reply notifications...
 		var isEmailNotificationChecked = $('#ReceiveEmailNotification').prop('checked');
-		console.log(isEmailNotificationChecked);
 		if(isEmailNotificationChecked === false) {
 			$('#FromEmailAddress').val('');
 		}
