@@ -93,6 +93,6 @@ $('#ThreadRetrievalButton').click(function(e) {
 
 $('#ReplyButton').click(function(e) {
 	$(document).ready(function () {	
-		window.location = '/#!/reply/$('#ThreadID').val().trim();
+		window.location = '/#!/reply/'+$('#ThreadID').val().trim();
 	});
 });
