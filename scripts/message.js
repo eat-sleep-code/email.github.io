@@ -90,10 +90,11 @@ $(document).ready(function () {
 					$('#ToEmailAddressRow').hide();
 					$('#ToEmailAddress').val(data.table.rows[0].c[5].v);
 					$('#Subject').val('Re: ' + data.table.rows[0].c[3].v);
-					$('#ReceiveEmailNotification').attr('checked','checked');
-					$('#FromEmailAddressRow').show();
-					$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
-					
+					if (data.table.rows[0].c[2] !== null) {
+						$('#ReceiveEmailNotification').attr('checked','checked');
+						$('#FromEmailAddressRow').show();
+						$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
+					}
 				}
 			}
 		}
