@@ -70,9 +70,9 @@ $(document).ready(function () {
 	setTimeout(function(){console.log($('#ThreadIDHidden').val())}, 3000);
 	if ($('#ThreadIDHidden').val() === '{{threadID}}') {
 		console.log("I went where I shouldn't have");
-		var threadID = generateUUID();
-		$('#ThreadIDHidden').val(threadID);
-		$('#ThreadID').html(threadID);
+		//var threadID = generateUUID();
+		//$('#ThreadIDHidden').val(threadID);
+		//$('#ThreadID').html(threadID);
 	}
 	else {
 		console.log("SQL: select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'");
