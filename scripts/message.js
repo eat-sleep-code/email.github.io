@@ -10,12 +10,25 @@ $('#MessageSendButton').click(function(e) {
 		if (form.valid() === true) {
 			if ($.trim($('#Message').val()).length >= 1) {
 			/* Send mail only if there is a message (basically prevent empty submissions if validation goes haywire)... */
-				var messageID = $.trim($('#MessageIDHidden').val());
-				var threadID = $.trim($('#ThreadIDHidden').val());
-				var sender = $.trim($('#FromEmailAddress').val());;
-				var recipient = $.trim($('#ToEmailAddress').val());
-				var subject = $.trim($('#Subject').val());
-				var message = $.trim($('#Message').val()).replace(/\n/g, '<br />') + '<br />';
+				var messageID = $('#MessageIDHidden').val().trim();
+				var threadID = $('#ThreadIDHidden').val().trim();
+				var sender = '';
+				if (!$('#FromEmailAddress').val()) {
+					sender = 'ANONYMOUS';
+				}
+				else {
+					sender = $('#FromEmailAddress').val().trim();
+				}
+				var recipient = '';
+				if (!$('#ToEmailAddress').val()) {
+					recipient = 'ANONYMOUS';
+				}
+				else 
+				{
+					recipient = $('#ToEmailAddress').val().trim();
+				}
+				var subject = $('#Subject').val().trim();
+				var message = $('#Message').val().trim().replace(/\n/g, '<br />') + '<br />';
 				var messageHeader = 'This message was sent to you anonymously.   If you would like to send a reply, <a href="'+serviceRootUrl+'/reply/'+threadID+'" target="_blank" title="Click here to reply to this message">click here</a>.';
 				var messageFooter = 'If you would like to block all ' + serviceName + ' users from sending you a message, <a href="'+serviceRootUrl+'/unsubscribe/'+recipient+'" target="_blank" title="Click here to block users from sending you future messages.">click here</a>.';
 			
@@ -39,11 +52,15 @@ $('#MessageSendButton').click(function(e) {
 						statusCode: {
 							0: function () {
 								// Send Mail 
-						    		sendMail(serviceEmail, serviceName, recipient, subject, messageHeader + '<hr />' + message + '<hr />' + messageFooter);
+								if (recipient !== 'ANONYMOUS') {
+						    			sendMail(serviceEmail, serviceName, recipient, subject, messageHeader + '<hr />' + message + '<hr />' + messageFooter);
+								}
 							},
 							200: function () {
 								// Send Mail 
-						    		sendMail(serviceEmail, serviceName, recipient, subject, messageHeader + '<hr />' + message + '<hr />' + messageFooter);
+								if (recipient !== 'ANONYMOUS') {
+						    			sendMail(serviceEmail, serviceName, recipient, subject, messageHeader + '<hr />' + message + '<hr />' + messageFooter);
+								}
 							}
 						}
 					});
