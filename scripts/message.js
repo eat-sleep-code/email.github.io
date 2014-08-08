@@ -67,7 +67,7 @@ $(document).ready(function () {
 	$('#MessageIDHidden').val(messageID);
 	
 	// Create this thread's GUID...
-	if (!$('#ThreadIDHidden').val()) {
+	if ($('#ThreadIDHidden').val() === '{{threadID}}') {
 		var threadID = generateUUID();
 		$('#ThreadIDHidden').val(threadID);
 		$('#ThreadID').html(threadID);
