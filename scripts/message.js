@@ -88,8 +88,8 @@ $(document).ready(function () {
 				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 				
 				if (data.table.rows[0] !== undefined) {
-					console.log('Re: ' + data.table.row[0].c[3])
-					$('#Subject').val('Re: ' + data.table.row[0].c[3]);
+					console.log('Re: ' + data.table.rows[0].c[3])
+					$('#Subject').val('Re: ' + data.table.rows[0].c[3]);
 					//console.log('Email Address Already Unsubscribed');
 				}
 			}
