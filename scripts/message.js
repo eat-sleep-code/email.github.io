@@ -91,7 +91,7 @@ $(document).ready(function () {
 	// Create this thread's GUID...
 	setTimeout(function(){
 		console.log($('#ThreadIDHidden').val());
-		if ($('#ThreadIDHidden').val() === '{{threadID}}') {
+		if ($('#ThreadIDHidden').val() === '{{threadID}}' || $('#ThreadIDHidden').val() === '') {
 			var threadID = generateUUID();
 			$('#ThreadIDHidden').val(threadID);
 			$('#ThreadID').html(threadID);
