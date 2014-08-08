@@ -2,7 +2,7 @@
 $('#MessageSendButton').click(function(e) {
 	$(document).ready(function () {
 		// Make sure "From" email address is not submitted if user didn't check the box to allow reply notifications...
-		var isEmailNotificationChecked = $('#ReceiveEmailNotification').checked;
+		var isEmailNotificationChecked = $('#ReceiveEmailNotification').prop('checked');
 		console.log(isEmailNotificationChecked);
 		if(isEmailNotificationChecked === false) {
 			$('#FromEmailAddress').val('');
@@ -114,7 +114,7 @@ $(document).ready(function () {
 						$('#ToEmailAddress').val(data.table.rows[0].c[5].v);
 					}
 					$('#Subject').val('Re: ' + data.table.rows[0].c[3].v);
-					$('#ReceiveEmailNotification').attr('checked','checked');
+					$('#ReceiveEmailNotification').prop('checked','checked');
 					$('#FromEmailAddressRow').show();
 					$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
 				}
@@ -148,12 +148,12 @@ $(document).ready(function () {
 			//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
 			if (data.table.rows[0] !== undefined) {
 				$('#UnsubscribedAlert').show();
-				$('#MessageSendButton').attr("disabled", "disabled");
+				$('#MessageSendButton').prop("disabled", "disabled");
 				//console.log('Email Address Already Unsubscribed');
 			}
 			else {
 				$('#UnsubscribedAlert').hide();
-				$('#MessageSendButton').removeAttr("disabled");
+				$('#MessageSendButton').removeProp("disabled");
 				//console.log('Email Address NOT Yet Unsubscribed');
 			}
 		}
