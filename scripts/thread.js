@@ -80,13 +80,14 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
-			console.log('About to check...2');
-			$('#Thread tbody tr td:first-child').each(function()
+			console.log('About to check...3');
+			$('#Thread tbody tr').each(function()
 			{
 				console.log('Found something...');
 				var currentVal = $(this).html().trim();
 				var date = new Date(currentVal);
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
+				*/
 			});
 		}	
 		$(window).scrollTop(0);
