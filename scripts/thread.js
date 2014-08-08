@@ -89,12 +89,12 @@ $('#ThreadRetrievalButton').click(function(e) {
 				var currentVal = $(this).html().trim();
 				var unformattedDate = new Date(currentVal);
 				
-				var dd = unformattedDate.getDate();
-				var mm = unformattedDate.getMonth()+1;//January is 0!
-				var yyyy = unformattedDate.getFullYear();
-				var hours = unformattedDate.getHours();
-				var minutes = unformattedDate.getMinutes();
-				var seconds = unformattedDate.getSeconds();
+				var dd = pad(unformattedDate.getDate(), 2);
+				var mm = pad(unformattedDate.getMonth()+1, 2);
+				var yyyy = pad(unformattedDate.getFullYear(), 4);
+				var hours = pad(unformattedDate.getHours(), 2);
+				var minutes = pad(unformattedDate.getMinutes(), 2);
+				var seconds = pad(unformattedDate.getSeconds(), 2);
 				d=mm+'/'+dd+'/'+yyyy+' '+hours+':'+minutes+':'+seconds
 				console.log(d);
 			});
