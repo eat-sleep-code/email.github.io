@@ -69,21 +69,27 @@ $('#ThreadRetrievalButton').click(function(e) {
 		var form = $('#ThreadRetrievalForm');
 		form.validate();
 		if (form.valid() === true) {
-			var threadID = $.trim($('#ThreadID').val());
+			var threadID = $('#ThreadID').val().trim();
 			
-			$('#Thread').sheetrock({
+			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select A,B,C,D,E,F,G where B = '" + $("#ThreadID").val() + "' order by A desc",
-				//formatting: false,
-	  			//dataHandler: getThread
+	  			sql: "select A,B,C,D,E,F,G where B = '"+threadID+"' order by A desc",
+				formatting: false,
+	  			dataHandler: getThread
 			});
 		
 			function getThread(data)
 			{
-				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+				$('#Thread').html('<pre>' + JSON.stringify(data) + '</pre>');
 			}
 		}	
 		$(window).scrollTop(0);
 		
+	});
+});
+
+$('#ReplyButton').click(function(e) {
+	$(document).ready(function () {	
+		window.location = '/#!/reply/$('#ThreadID').val().trim();
 	});
 });
