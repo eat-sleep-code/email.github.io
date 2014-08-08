@@ -80,8 +80,10 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
+			console.log('About to check...');
 			$('#Thread tbody tr td:first-of-type').each(function()
 			{
+				console.log('Found something...');
 				var currentVal = $(this).html().trim();
 				var date = new Date(currentVal);
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
