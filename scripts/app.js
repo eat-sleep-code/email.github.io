@@ -20,7 +20,13 @@ app.config(['$routeProvider', '$locationProvider',
 			when('/message', {templateUrl: 'views/message.html', controller: 'MessageController'}).
 			when('/send', {templateUrl: 'views/message.html', controller: 'MessageController'}).
 			when('/message/:threadID', {templateUrl: 'views/message.html', controller: 'MessageController'}).
+			when('/send/:threadID', {templateUrl: 'views/message.html', controller: 'MessageController'}).
 			when('/reply/:threadID', {templateUrl: 'views/message.html', controller: 'MessageController'}).
+			when('/thread', {templateUrl: 'views/thread.html', controller: 'DefaultController'}).
+			when('/retrieve', {templateUrl: 'views/thread.html', controller: 'DefaultController'}).
+			when('/retrieval', {templateUrl: 'views/thread.html', controller: 'DefaultController'}).
+			when('/get', {templateUrl: 'views/thread.html', controller: 'DefaultController'}).
+			when('/pickup', {templateUrl: 'views/thread.html', controller: 'DefaultController'}).
 			when('/unsubscribe', {templateUrl: 'views/unsubscribe.html', controller: 'UnsubscribeController'}).
 			when('/unsubscribe/:emailAddress', {templateUrl: 'views/unsubscribe.html', controller: 'UnsubscribeController'}).
 			when('/contact', {templateUrl: 'views/contact.html', controller: 'DefaultController'}).
@@ -41,14 +47,10 @@ app.controller('DefaultController', function($scope) {});
 
 app.controller('MessageController', function($scope, $routeParams, $http) {
 	$scope.threadID = $routeParams.threadID;
-	$scope.data = '';
-	$scope.status = '';
 });
 
 app.controller('UnsubscribeController', function($scope, $routeParams, $http) {
 	$scope.emailAddress = $routeParams.emailAddress;
-	$scope.data = '';
-	$scope.status = '';
 });
 
 /* Filters */
