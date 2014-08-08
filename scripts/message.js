@@ -69,7 +69,6 @@ $(document).ready(function () {
 	// Create this thread's GUID...
 	setTimeout(function(){
 		if ($('#ThreadIDHidden').val() === '{{threadID}}') {
-			console.log("I went where I shouldn't have");
 			var threadID = generateUUID();
 			$('#ThreadIDHidden').val(threadID);
 			$('#ThreadID').html(threadID);
@@ -87,21 +86,15 @@ $(document).ready(function () {
 			function getMessageData(data)
 			{
 				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-			/*	
+				
 				if (data.table.rows[0] !== undefined) {
-					$('#UnsubscribedAlert').show();
-					$('#MessageSendButton').attr("disabled", "disabled");
+					console.log()
+					$('#Subject').val('Re: ' + data.table.rows[0].c[3]);
 					//console.log('Email Address Already Unsubscribed');
 				}
-				else {
-					$('#UnsubscribedAlert').hide();
-					$('#MessageSendButton').removeAttr("disabled");
-					//console.log('Email Address NOT Yet Unsubscribed');
-				}
-			*/
 			}
 		}
-	}, 1000);
+	}, 100);
 
 	// Toggle visibility of "From" email address row...
 	$('#ReceiveEmailNotification').click(function(){
