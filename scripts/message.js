@@ -67,7 +67,7 @@ $(document).ready(function () {
 	$('#MessageIDHidden').val(messageID);
 	
 	// Create this thread's GUID...
-	console.log($scope.threadID);
+	setTimeout(console.log($('#ThreadIDHidden').val()), 3000);
 	if ($('#ThreadIDHidden').val() === '{{threadID}}') {
 		console.log("I went where I shouldn't have");
 		var threadID = generateUUID();
