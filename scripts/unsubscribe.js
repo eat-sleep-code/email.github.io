@@ -44,7 +44,7 @@ $(document).ready(function () {
 			EmailAddress: {required: true, email: true}
 		},
 		messages: {
-			EmailAddress: {required: 'Please enter your email address.', email: 'Please enter a valid email address.'},
+			EmailAddress: {required: 'Please enter your email address.', email: 'Please enter a valid email address.'}
 		},
 		errorPlacement: function (error, element) {
 			$(error).insertBefore($(element));
