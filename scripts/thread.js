@@ -83,7 +83,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 		}	
 		console.log('About to check...5');
 		setTimeout(function() {
-			$('#Thread tbody tr td').each(function()
+			$('#Thread tbody tr td:first-child').each(function()
 			{
 				console.log('Found something...');
 				var currentVal = $(this).html().trim();
