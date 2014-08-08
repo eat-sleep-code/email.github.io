@@ -76,8 +76,9 @@ $('#ThreadRetrievalButton').click(function(e) {
 			
 			$('#Thread').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select year(A),E where B = '"+threadID+"' order by A desc",
-	  			chunkSize: 100
+	  			sql: "select month(A)-day(A)-year(A),E where B = '"+threadID+"' order by A desc",
+	  			chunkSize: 100,
+	  			labels: ['Date', 'Message']
 			});
 		}	
 		$(window).scrollTop(0);
