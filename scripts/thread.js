@@ -90,7 +90,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 				var date = new Date(currentVal);
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
 			});
-		}, 10);
+		}, 1000);
 		$(window).scrollTop(0);
 		$('#ThreadRetrievalForm').hide();
 		$('#ThreadContainer').show();
