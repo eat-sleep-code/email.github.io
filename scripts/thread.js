@@ -80,7 +80,9 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
-			console.log('About to check...3');
+		}	
+		console.log('About to check...4');
+		setTimeout(function() {
 			$('#Thread tbody tr').each(function()
 			{
 				console.log('Found something...');
@@ -90,7 +92,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
 				*/
 			});
-		}	
+		}, 1000);
 		$(window).scrollTop(0);
 		$('#ThreadRetrievalForm').hide();
 		$('#ThreadContainer').show();
