@@ -108,7 +108,7 @@ $(document).ready(function () {
 		}
 		else {
 			$('#FromEmailAddressRow').hide();
-			$('#FromEmailAddressRow').val();
+			$('#FromEmailAddressRow').val('');
 		}
 	});
 	
