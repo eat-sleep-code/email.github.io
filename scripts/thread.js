@@ -77,14 +77,8 @@ $('#ThreadRetrievalButton').click(function(e) {
 			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
 	  			sql: "select A,B,D,E,F,G where B = '"+threadID+"' order by A desc",
-				formatting: false,
-	  			dataHandler: getThread
+	  			chunkSize: 100
 			});
-		
-			function getThread(data)
-			{
-				$('#Thread').html('<pre>' + JSON.stringify(data) + '</pre>');
-			}
 		}	
 		$(window).scrollTop(0);
 		$('#ThreadRetrievalForm').hide();
