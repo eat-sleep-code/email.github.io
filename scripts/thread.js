@@ -8,7 +8,7 @@ $(document).ready(function () {
 		//console.log('Datasource: ' + messageDatasourceRead);
 		$('#dataPlaceholder').sheetrock({
   			url: messageDatasourceRead,
-  			sql: "select B where B = '" + $("#ThreadID").val() + "'",
+  			sql: "select A,B,C,D where B = '"+$("#ThreadID").val().trim()+"' order by A",
   			chunkSize: 1,
 			formatting: false,
   			dataHandler: isThreadIDValid
@@ -22,6 +22,8 @@ $(document).ready(function () {
 			}
 			else {
 				$('#InvalidThreadIDAlert').hide();
+				$('#Subject').html(data.table.rows[0].c[3].v);
+				$('#OriginalRecipient').html(data.table.rows[0].c[2].v);
 			}
 		}
 	});
@@ -73,7 +75,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 			
 			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select A,B,C,D,E,F,G where B = '"+threadID+"' order by A desc",
+	  			sql: "select A,B,D,E,F,G where B = '"+threadID+"' order by A desc",
 				formatting: false,
 	  			dataHandler: getThread
 			});
@@ -84,7 +86,8 @@ $('#ThreadRetrievalButton').click(function(e) {
 			}
 		}	
 		$(window).scrollTop(0);
-		
+		$('#ThreadRetrievalForm').hide();
+		$('#ThreadContainer').show();
 	});
 });
 
