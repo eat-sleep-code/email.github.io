@@ -80,8 +80,8 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
-			console.log('About to check...');
-			$('#Thread tr td:first-child').each(function()
+			console.log('About to check...2');
+			$('#Thread tbody tr td:first-child').each(function()
 			{
 				console.log('Found something...');
 				var currentVal = $(this).html().trim();
