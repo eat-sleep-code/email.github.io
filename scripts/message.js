@@ -67,41 +67,41 @@ $(document).ready(function () {
 	$('#MessageIDHidden').val(messageID);
 	
 	// Create this thread's GUID...
-	setTimeout(function(){console.log($('#ThreadIDHidden').val())}, 3000);
-	if ($('#ThreadIDHidden').val() === '{{threadID}}') {
-		console.log("I went where I shouldn't have");
-		//var threadID = generateUUID();
-		//$('#ThreadIDHidden').val(threadID);
-		//$('#ThreadID').html(threadID);
-	}
-	else {
-		console.log("SQL: select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'");
-		$('#ToEmailAddressRow').hide();
-		$('#dataPlaceholder').sheetrock({
-  			url: messageDatasourceRead,
-  			sql: "select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'",
-			formatting: false,
-  			dataHandler: getMessageData
-		});
-	
-		function getMessageData(data)
-		{
-			$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-		/*	
-			if (data.table.rows[0] !== undefined) {
-				$('#UnsubscribedAlert').show();
-				$('#MessageSendButton').attr("disabled", "disabled");
-				//console.log('Email Address Already Unsubscribed');
-			}
-			else {
-				$('#UnsubscribedAlert').hide();
-				$('#MessageSendButton').removeAttr("disabled");
-				//console.log('Email Address NOT Yet Unsubscribed');
-			}
-		*/
+	setTimeout(function(){
+		if ($('#ThreadIDHidden').val() === '{{threadID}}') {
+			console.log("I went where I shouldn't have");
+			var threadID = generateUUID();
+			$('#ThreadIDHidden').val(threadID);
+			$('#ThreadID').html(threadID);
 		}
-	}
-	
+		else {
+			console.log("SQL: select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'");
+			$('#ToEmailAddressRow').hide();
+			$('#dataPlaceholder').sheetrock({
+	  			url: messageDatasourceRead,
+	  			sql: "select A,B,C,D,E where B = '" + $("#ThreadIDHidden").val() + "'",
+				formatting: false,
+	  			dataHandler: getMessageData
+			});
+		
+			function getMessageData(data)
+			{
+				$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+			/*	
+				if (data.table.rows[0] !== undefined) {
+					$('#UnsubscribedAlert').show();
+					$('#MessageSendButton').attr("disabled", "disabled");
+					//console.log('Email Address Already Unsubscribed');
+				}
+				else {
+					$('#UnsubscribedAlert').hide();
+					$('#MessageSendButton').removeAttr("disabled");
+					//console.log('Email Address NOT Yet Unsubscribed');
+				}
+			*/
+			}
+		}
+	}, 1000);
 
 	// Toggle visibility of "From" email address row...
 	$('#ReceiveEmailNotification').click(function(){
