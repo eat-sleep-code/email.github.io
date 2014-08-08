@@ -9,6 +9,7 @@ $(document).ready(function () {
 		$('#dataPlaceholder').sheetrock({
   			url: messageDatasourceRead,
   			sql: "select B where B = '" + $("#ThreadID").val() + "'",
+  			chunkSize: 1,
 			formatting: false,
   			dataHandler: isThreadIDValid
 		});
