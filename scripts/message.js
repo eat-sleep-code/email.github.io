@@ -93,7 +93,7 @@ $(document).ready(function () {
 					if (data.table.rows[0].c[2] !== null) {
 						$('#ReceiveEmailNotification').attr('checked','checked');
 						$('#FromEmailAddressRow').show();
-						$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
+						//$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
 					}
 				}
 			}
