@@ -9,6 +9,7 @@ $(document).ready(function () {
 		$('#dataPlaceholder').sheetrock({
   			url: unsubscribeDatasourceRead,
   			sql: "select B where B = '" + $("#EmailAddress").val() + "'",
+  			chunkSize: 1,
 			formatting: false,
   			dataHandler: isEmailUnsubscribed
 		});
