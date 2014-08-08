@@ -76,7 +76,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 			
 			$('#Thread').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select month(A)-day(A)-year(A),E where B = '"+threadID+"' order by A desc",
+	  			sql: "select todate(A),E where B = '"+threadID+"' order by A desc Format toDate(A) 'dd-mm-yyyy'",
 	  			chunkSize: 100,
 	  			labels: ['Date', 'Message']
 			});
