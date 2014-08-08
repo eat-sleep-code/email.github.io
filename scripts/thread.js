@@ -4,31 +4,6 @@ $(document).ready(function () {
 	$('#ThreadRetrievalForm').show();
 	$('#ThreadContainer').hide();
 	
-	// Toggle already unsubscribed message based on user's email address...
-	$('#ThreadID').blur(function() {
-		//console.log('Datasource: ' + messageDatasourceRead);
-		$('#dataPlaceholder').sheetrock({
-  			url: messageDatasourceRead,
-  			sql: "select A,B,C,D where B = '"+$("#ThreadID").val().trim()+"' order by A",
-  			chunkSize: 1,
-			formatting: false,
-  			dataHandler: isThreadIDValid
-		});
-	
-		function isThreadIDValid(data)
-		{
-			//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
-			if (data.table.rows[0] === undefined) {
-				$('#InvalidThreadIDAlert').show();
-			}
-			else {
-				$('#InvalidThreadIDAlert').hide();
-				$('#Subject').html(data.table.rows[0].c[3].v);
-				$('#OriginalRecipient').html(data.table.rows[0].c[2].v);
-			}
-		}
-	});
-	
 	// Toggle visibility of "CAPTCHA" row...
 	if ($.cookie('ClearedCaptcha') !== undefined)
 	{
@@ -74,6 +49,29 @@ $('#ThreadRetrievalButton').click(function(e) {
 		if (form.valid() === true) {
 			var threadID = $('#ThreadID').val().trim();
 			
+			//console.log('Datasource: ' + messageDatasourceRead);
+			$('#dataPlaceholder').sheetrock({
+	  			url: messageDatasourceRead,
+	  			sql: "select A,B,C,D where B = '"+threadID+"' order by A",
+	  			chunkSize: 1,
+				formatting: false,
+	  			dataHandler: isThreadIDValid
+			});
+		
+			function isThreadIDValid(data)
+			{
+				//$('#dataPlaceholder').html('<pre>' + JSON.stringify(data) + '</pre>');
+				if (data.table.rows[0] === undefined) {
+					$('#InvalidThreadIDAlert').show();
+				}
+				else {
+					$('#InvalidThreadIDAlert').hide();
+					$('#Subject').html(data.table.rows[0].c[3].v);
+					$('#OriginalRecipient').html(data.table.rows[0].c[2].v);
+				}
+			}
+			
+			// Put the info the user should see into the table...
 			$('#Thread').sheetrock({
 	  			url: messageDatasourceRead,
 	  			sql: "select A,E where B = '"+threadID+"' order by A desc",
@@ -81,8 +79,9 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			labels: ['Date', 'Message']
 			});
 		}	
-		console.log('About to check...5');
+		
 		setTimeout(function() {
+			// Cleanup date formatting from Google's format
 			$('#Thread tbody tr td:first-child').each(function()
 			{
 				var currentVal = $(this).html().trim();
@@ -97,9 +96,9 @@ $('#ThreadRetrievalButton').click(function(e) {
 				var seconds = pad(unformattedDate.getSeconds(), 2);
 				var tt = 'am';
 				if (hours >= 12) { 
-					tt = 'pm'
+					tt = 'pm';
 				}
-				d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt
+				d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt;
 				$(this).html(d);
 				//console.log(d);
 			});
