@@ -104,10 +104,11 @@ $('#ThreadRetrievalButton').click(function(e) {
 				$(this).html(d);
 				//console.log(d);
 			});
+			$('#ThreadRetrievalForm').hide();
+			$('#ThreadContainer').show();
 		}, 1000);
 		$(window).scrollTop(0);
-		$('#ThreadRetrievalForm').hide();
-		$('#ThreadContainer').show();
+		
 	});
 });
 
