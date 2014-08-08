@@ -81,7 +81,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			labels: ['Date', 'Message']
 			});
 			console.log('About to check...');
-			$('#Thread tbody tr td:first-of-type').each(function()
+			$('#Thread tr td:first-child').each(function()
 			{
 				console.log('Found something...');
 				var currentVal = $(this).html().trim();
