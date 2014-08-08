@@ -101,7 +101,8 @@ $('#ThreadRetrievalButton').click(function(e) {
 					tt = 'pm'
 				}
 				d=mm+'/'+dd+'/'+yyyy+' '+hours12+':'+minutes+tt
-				console.log(d);
+				$(this).html(d);
+				//console.log(d);
 			});
 		}, 1000);
 		$(window).scrollTop(0);
