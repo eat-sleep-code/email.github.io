@@ -81,18 +81,16 @@ $('#ThreadRetrievalButton').click(function(e) {
 	  			labels: ['Date', 'Message']
 			});
 		}	
-		console.log('About to check...4');
+		console.log('About to check...5');
 		setTimeout(function() {
-			$('#Thread tbody tr').each(function()
+			$('#Thread tbody tr td:first-child').each(function()
 			{
 				console.log('Found something...');
-				/*
 				var currentVal = $(this).html().trim();
 				var date = new Date(currentVal);
 				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
-				*/
 			});
-		}, 1000);
+		}, 10);
 		$(window).scrollTop(0);
 		$('#ThreadRetrievalForm').hide();
 		$('#ThreadContainer').show();
