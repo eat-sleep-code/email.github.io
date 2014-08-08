@@ -85,7 +85,6 @@ $('#ThreadRetrievalButton').click(function(e) {
 		setTimeout(function() {
 			$('#Thread tbody tr td:first-child').each(function()
 			{
-				console.log('Found something...');
 				var currentVal = $(this).html().trim();
 				var unformattedDate = new Date(currentVal);
 				
