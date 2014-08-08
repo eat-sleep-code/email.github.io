@@ -87,8 +87,18 @@ $('#ThreadRetrievalButton').click(function(e) {
 			{
 				console.log('Found something...');
 				var currentVal = $(this).html().trim();
-				var date = new Date(currentVal);
-				console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
+				var unformattedDate = new Date(currentVal);
+				
+				var dd = unformattedDate.getDate();
+				var mm = unformattedDate.getMonth()+1;//January is 0!
+				var yyyy = unformattedDate.getFullYear();
+				var hours = unformattedDate.getHours();
+				var minutes = unformattedDate.getMinutes();
+				var seconds = unformattedDate.getSeconds();
+				if(dd<10){dd='0'+dd}
+				if(mm<10){mm='0'+mm}
+				d=mm+'/'+dd+'/'+yyyy+' '+hours+':'+minutes+':'+seconds
+				console.log(d);
 			});
 		}, 1000);
 		$(window).scrollTop(0);
