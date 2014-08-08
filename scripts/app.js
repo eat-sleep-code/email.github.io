@@ -31,7 +31,6 @@ app.config(['$routeProvider', '$locationProvider',
 			when('/unsubscribe/:emailAddress', {templateUrl: 'views/unsubscribe.html', controller: 'UnsubscribeController'}).
 			when('/contact', {templateUrl: 'views/contact.html', controller: 'DefaultController'}).
 			when('/privacy', {templateUrl: 'views/privacy.html', controller: 'DefaultController'}).
-			when('/resources', {templateUrl: 'views/resources.html', controller: 'DefaultController'}).
 			when('/terms', {templateUrl: 'views/terms.html', controller: 'DefaultController'}).
 			when('/404', {templateUrl: 'views/404.html', controller: 'DefaultController'}).
 			otherwise({
