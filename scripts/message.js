@@ -89,7 +89,7 @@ $(document).ready(function () {
 				
 				if (data.table.rows[0] !== undefined) {
 					console.log('Re: ' + data.table.rows[0].c[3])
-					$('#Subject').val('Re: ' + data.table.rows[0].c[3]);
+					$('#Subject').val('Re: ' + data.table.rows[0].c[3].v);
 					//console.log('Email Address Already Unsubscribed');
 				}
 			}
