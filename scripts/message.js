@@ -102,7 +102,8 @@ $(document).ready(function () {
 			//console.log("SQL: select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'");
 			$('#dataPlaceholder').sheetrock({
 	  			url: messageDatasourceRead,
-	  			sql: "select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "'",
+	  			sql: "select A,B,C,D,E,F,G where B = '" + $("#ThreadIDHidden").val() + "' order by A desc",
+	  			chunkSize: 1,
 				formatting: false,
 	  			dataHandler: getMessageData
 			});
@@ -142,6 +143,7 @@ $(document).ready(function () {
 		$('#dataPlaceholder').sheetrock({
   			url: unsubscribeDatasourceRead,
   			sql: "select B where B = '" + $("#ToEmailAddress").val() + "'",
+  			chunkSize: 1,
 			formatting: false,
   			dataHandler: isEmailUnsubscribed
 		});
