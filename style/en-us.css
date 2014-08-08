@@ -149,9 +149,9 @@ label.legacy-label
 
 
 
-#Thread tbody tr td
+#Thread thead tr td:first-of-type, #Thread tbody tr td:first-of-type
 {
-	float: left;
+	width: 100px;
 }
 
 
