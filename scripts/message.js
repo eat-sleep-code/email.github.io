@@ -119,7 +119,10 @@ $(document).ready(function () {
 					$('#Subject').val('Re: ' + data.table.rows[0].c[3].v);
 					$('#ReceiveEmailNotification').prop('checked','checked');
 					$('#FromEmailAddressRow').show();
-					$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
+					var fromAddress = data.table.rows[0].c[2].v;
+					if (fromAddress !== 'ANONYMOUS') {
+						$('#FromEmailAddress').val();
+					});
 				}
 			}
 			$('#ThreadID').html($('#ThreadIDHidden').val());
