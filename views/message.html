@@ -2,8 +2,13 @@
 <br />
 
 <div id="MessageSentAlert" class="alert alert-success">
-	Your message has been sent.  
-	To view responses to this message you will need the following code:
+	Your message has been sent.
+	<br />
+	<div id="WillReceiveEmailNotification">
+		You will receive an email notification if the recipient responds to your message.
+		<br />
+	</div>
+	To view responses to this message you may use the following message access code:
 	<span id="ThreadID"></span>
 </div>
 
@@ -14,23 +19,23 @@
 <form role="form" id="MessageForm">
 	<div class="form-group row" id="ToEmailAddressRow">
     		<label for="ToEmailAddress" class="sr-only legacy-label">Recipient's Email Address</label>
-		<input type="email" id="ToEmailAddress" name="ToEmailAddress" maxlength="255" class="form-control" placeholder="Recipient's Email Address" />
+		<input type="email" id="ToEmailAddress" name="ToEmailAddress" maxlength="255" class="form-control" placeholder="Enter the recipient's email address..." />
 	</div>
 	<div class="form-group row" id="SubjectRow">
 		<label for="Subject" class="sr-only legacy-label">Subject</label>
-		<input type="text" id="Subject" name="Subject" maxlength="255" class="form-control" placeholder="Subject" />
+		<input type="text" id="Subject" name="Subject" maxlength="255" class="form-control" placeholder="Enter a subject..." />
 	</div>
 	<div class="form-group row" id="MessageRow">
 		<label for="Message" class="sr-only legacy-label">Message</label>
-		<textarea id="Message" name="Message" rows="5" class="form-control" placeholder="Message"></textarea>
+		<textarea id="Message" name="Message" rows="5" class="form-control" placeholder="Enter your message..."></textarea>
 	</div>
 	<div class="form-group row" id="ReceiveEmailNotificationRow">
-		<input type="checkbox" id="ReceiveEmailNotification" name="ReceiveEmailNotification" />
-		<label for="ReceiveEmailNotification">Yes, I would like to receive an email notification if the user responds to my message.</label>
+		<input type="checkbox" id="ReceiveEmailNotification" name="ReceiveEmailNotification" title="Check this box if you would like to receive an email notification if the recipient responds to your message..." />
+		<label for="ReceiveEmailNotification">Yes, I would like to receive an email notification if the recipient responds to my message.</label>
 	</div>
 	<div class="form-group row" id="FromEmailAddressRow">
 		<label for="FromEmailAddress" class="sr-only legacy-label">Your Email Address</label>
-		<input type="email" id="FromEmailAddress" name="FromEmailAddress" maxlength="255" class="form-control" placeholder="Your Email Address" />
+		<input type="email" id="FromEmailAddress" name="FromEmailAddress" maxlength="255" class="form-control" placeholder="Enter your email address..." />
 	</div>
 	<div class="form-group row" id="CaptchaRow">
 		<div class="col-xs-6 col-md-3 no-padding">
