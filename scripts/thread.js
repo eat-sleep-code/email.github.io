@@ -74,7 +74,7 @@ $('#ThreadRetrievalButton').click(function(e) {
 		if (form.valid() === true) {
 			var threadID = $('#ThreadID').val().trim();
 			
-			$('#dataPlaceholder').sheetrock({
+			$('#Thread').sheetrock({
 	  			url: messageDatasourceRead,
 	  			sql: "select A,E where B = '"+threadID+"' order by A desc",
 	  			chunkSize: 100
