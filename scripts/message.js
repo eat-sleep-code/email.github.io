@@ -118,6 +118,7 @@ $(document).ready(function () {
 					$('#FromEmailAddress').val(data.table.rows[0].c[2].v);
 				}
 			}
+			$('#ThreadID').html($('#ThreadIDHidden').val())
 		}
 	}, 100);
 
