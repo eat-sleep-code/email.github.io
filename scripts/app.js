@@ -9,7 +9,7 @@ var messageDatasourceRead = 'https://docs.google.com/spreadsheets/d/1A489xTOwSGT
 var unsubscribeDatasourceWrite = 'https://docs.google.com/forms/d/1JkF4sP5G4HVJAAlP4NKPVlnFaJQtAXm6yL2I8dLPwtE/formResponse';
 var unsubscribeDatasourceRead = 'https://docs.google.com/spreadsheets/d/1wUilI5prEx6ocuCh91Za_uc_F2cOZx3zzamMO46hSx8#gid=0';
 
-var app = angular.module('eatsleepcode', ['ngRoute', 'ngSanitize']); 
+var app = angular.module('email', ['ngRoute', 'ngSanitize']); 
 
 /* Routing */
 app.config(['$routeProvider', '$locationProvider',
